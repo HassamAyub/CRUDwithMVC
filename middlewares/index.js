@@ -1,11 +1,20 @@
 const fs=require('fs');
+const path=require('path')
 
-async function logReq(filename) {
+function logReq(filename) {
+
     return (req,res,next)=>{
-        fs.writeFile(filename,`${Date.now()}, method:${req.method}, Path:${req.path}\n`,(err,result)=>{
-            console.log('log updated');
-            next();
-        });
-        
-    }
+            const fullPath = path.resolve(filename);
+            const logdata=`${Date.now()}, method:${req.method}, Path:${req.path}\n`;
+            
+            fs.appendFile(fullPath,logdata,err=>{
+                if(!err){
+                    console.log('log updated');
+                    next();
+                }
+                
+            });
+        }
 }
+
+module.exports=logReq;

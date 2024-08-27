@@ -4,6 +4,4 @@ async function DBConnection(url) {
     return mongoose.connect(url)
 }
 
-module.exports={
-    DBCon:DBConnection,
-}
+module.exports=DBConnection

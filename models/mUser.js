@@ -13,10 +13,8 @@ const userSchema=mongoose.Schema({
     },jobTitle:{
         type:String,
     }
-})
+},{timestamps:true})
 
 const userModel= new mongoose.model('students',userSchema);
 
-module.exports={
-    User:userModel
-}
+module.exports=userModel;

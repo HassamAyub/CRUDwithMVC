@@ -7,4 +7,10 @@ router
     .get(CtrlFuncs.getAllusers)
     .post(CtrlFuncs.postnewUser)
 
+router
+    .route('/:id')
+    .get(CtrlFuncs.getuserbyID)
+    .patch(CtrlFuncs.updateUserbyID)
+    .delete(CtrlFuncs.deleteUserbyID)
+
 module.exports=router;
